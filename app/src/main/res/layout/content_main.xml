@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:visibility="visible"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.srikanth.shopping_cart.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+
+    <GridView
+        android:id="@+id/gv_items"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:gravity="bottom"
+        android:horizontalSpacing="4dp"
+        android:numColumns="1"
+        android:verticalSpacing="4dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"></GridView>
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3"
+        android:gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="#808080"
+        android:layout_alignParentEnd="true">
+
+        <Button
+            android:id="@+id/mylist"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/list_icon"
+            android:text="MyList" />
+
+        <Button
+            android:id="@+id/checkout"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/cart_icon"
+            android:text="CheckOut" />
+
+        <Button
+            android:id="@+id/profile"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/profile_icon"
+            android:text="sign IN" />
+
+
+    </TableRow>
+
+
+
+
+</RelativeLayout>
