@@ -76,7 +76,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         values.put(ITEM_DESCRIPTION,"specifications");
         values.put(ITEM_OFFER_STATUS,String.valueOf(1));
         values.put(ITEM_CATEGERY,"ELECTRONICS");
-        values.put(ITEM_IMAGE,"https://img.clipartfest.com/4851cd7a446f6fee0ca9d34fb79fe386_iphone-5-phone-icon-iphone-5s-clipart_256-256.png");
+        values.put(ITEM_IMAGE,"https:\\/\\/img.clipartfest.com\\/4851cd7a446f6fee0ca9d34fb79fe386_iphone-5-phone-icon-iphone-5s-clipart_256-256.png");
         db.insert(TABLE_ITEMS, null, values);
 
 
@@ -86,7 +86,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         values.put(ITEM_DESCRIPTION,"ingredients");
         values.put(ITEM_OFFER_STATUS,String.valueOf(1));
         values.put(ITEM_CATEGERY,"GROCERIES");
-        values.put(ITEM_IMAGE,"null");
+        values.put(ITEM_IMAGE,"http:\\/\\/static.wixstatic.com\\/media\\/8bd095_db96b533e35e42e489a9693c5df452ce~mv2.jpg_256");
         db.insert(TABLE_ITEMS, null, values);
 
         values.put(ITEM_NAME,"Dinning table");
@@ -95,7 +95,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         values.put(ITEM_DESCRIPTION,"Measurements");
         values.put(ITEM_OFFER_STATUS,String.valueOf(1));
         values.put(ITEM_CATEGERY,"HOME_DECOR");
-        values.put(ITEM_IMAGE,"null");
+        values.put(ITEM_IMAGE,"https:\\/\\/slimages.macysassets.com\\/is\\/image\\/MCY\\/products\\/7\\/optimized/3503567_fpx.tif?op_sharpen=1&wid=400&hei=489&fit=fit,1&$filterlrg$");
         db.insert(TABLE_ITEMS, null, values);
 
         values.put(ITEM_NAME,"HTC_MOBILE");
@@ -104,7 +104,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         values.put(ITEM_DESCRIPTION,"specifications");
         values.put(ITEM_OFFER_STATUS,String.valueOf(1));
         values.put(ITEM_CATEGERY,"ELECTRONICS");
-        values.put(ITEM_IMAGE,"null");
+        values.put(ITEM_IMAGE,"https:\\/\\/img.clipartfox.com\\/893207a720a39c3838bfd70aa5dd85b7_format-png-clipart-for-htc-mobile-phone_256-256.png");
         db.insert(TABLE_ITEMS, null, values);
         //db.close();
     }

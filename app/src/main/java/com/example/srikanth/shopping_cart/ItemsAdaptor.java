@@ -3,6 +3,7 @@ package com.example.srikanth.shopping_cart;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Srikanth on 3/8/2017.
@@ -62,53 +64,65 @@ public class ItemsAdaptor extends BaseAdapter{
             TextView textPrice = (TextView) gv_items.findViewById(R.id.grid_price);
             TextView textOffer = (TextView) gv_items.findViewById(R.id.grid_offer);
             ImageView imgview = (ImageView) gv_items.findViewById(R.id.imgId);
-            Bitmap bitmap= getBitmapFromURL(sItems.get(position).getIcon());
+
+
+
+
             String itemName = sItems.get(position).get_itemName();
 
             textView.setText("Product:"+itemName);
             textPrice.setText("Price:"+sItems.get(position).get_itemprice());
             textOffer.setText("Offer:"+sItems.get(position).get_itemOffer());
-            if(itemName.equals("Iphone 5s"))
+            /*if(itemName.equals("Iphone 5s"))
                 imgview.setImageResource(R.drawable.iphone);
             if(itemName.equals("Bru coffee"))
                 imgview.setImageResource(R.drawable.bru);
             if(itemName.equals("Dinning table"))
                 imgview.setImageResource(R.drawable.dinning);
             if(itemName.equals("HTC_MOBILE"))
-                imgview.setImageResource(R.drawable.htc);
-            //imgview.setImageBitmap(bitmap);
+                imgview.setImageResource(R.drawable.htc);*/
 
-
-
+            ImageDownloader task = new ImageDownloader();
+            Bitmap myImage = null;
+            try {
+                myImage =task.execute(sItems.get(position).getIcon()).get();
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+            imgview.setImageBitmap(myImage);
 
         } else {
             gv_items = (View) convertView;
         }
         return gv_items;
     }
-    public Bitmap getBitmapFromURL(String src)
+    public class ImageDownloader extends AsyncTask<String, Void, Bitmap>
     {
-        try{
 
-            URL url = new URL(src);
-            Log.d("source",src);
-            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-            connection.setDoInput(true);
+        @Override
+        protected Bitmap doInBackground(String... urls) {
             try{
-                connection.connect();
-            }catch (Exception e)
-            {
+
+                URL url = new URL(urls[0]);
+
+                HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+                connection.setDoInput(true);
+                try{
+                    connection.connect();
+                }catch (Exception e)
+                {
+                    e.printStackTrace();
+                    return null;
+                }
+
+                InputStream input = connection.getInputStream();
+                Bitmap myBitmap = BitmapFactory.decodeStream(input);
+                return myBitmap;
+
+            }catch (Exception e){
                 e.printStackTrace();
                 return null;
             }
-
-            InputStream input = connection.getInputStream();
-            Bitmap myBitmap = BitmapFactory.decodeStream(input);
-            return myBitmap;
-
-        }catch (Exception e){
-            e.printStackTrace();
-            return null;
         }
     }
 }
